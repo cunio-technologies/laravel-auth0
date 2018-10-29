@@ -28,7 +28,7 @@ class Auth0Controller extends Controller
     public function callback()
     {
         // Get a handle of the Auth0 service (we don't know if it has an alias)
-        $service = \App::make('auth0');
+        $service = \App::make('openid');
 
         // Try to get the user information
         $profile = $service->getUser();

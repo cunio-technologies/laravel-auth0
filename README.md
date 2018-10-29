@@ -70,7 +70,7 @@ In your `config/auth.php` file update the providers to use the `auth0` driver:
 ...
     'providers' => [
         'users' => [
-            'driver' => 'auth0',
+            'driver' => 'openid',
         ],
     ],
 ...

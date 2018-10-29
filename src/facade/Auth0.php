@@ -11,6 +11,6 @@ class Auth0 extends \Illuminate\Support\Facades\Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'auth0';
+        return 'openid';
     }
 }

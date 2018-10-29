@@ -7,7 +7,7 @@ use Auth0\SDK\Store\StoreInterface;
 
 class LaravelSessionStore implements StoreInterface
 {
-    const BASE_NAME = 'auth0_';
+    const BASE_NAME = 'openid_';
 
     /**
      * Persists $value on $_SESSION, identified by $key.

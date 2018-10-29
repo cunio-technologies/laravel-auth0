@@ -4,30 +4,30 @@ return array(
 
     /*
     |--------------------------------------------------------------------------
-    |   Your auth0 domain
+    |   Your openid domain
     |--------------------------------------------------------------------------
-    |   As set in the auth0 administration page
+    |   As set in the openid administration page
     |
     */
-    'domain'        => env( 'AUTH0_DOMAIN' ),
+    'domain'        => env( 'OPENID_DOMAIN' ),
 
     /*
     |--------------------------------------------------------------------------
     |   Your APP id
     |--------------------------------------------------------------------------
-    |   As set in the auth0 administration page
+    |   As set in the openid administration page
     |
     */
-    'client_id'     => env( 'AUTH0_CLIENT_ID' ),
+    'client_id'     => env( 'OPENID_CLIENT_ID' ),
 
     /*
     |--------------------------------------------------------------------------
     |   Your APP secret
     |--------------------------------------------------------------------------
-    |   As set in the auth0 administration page
+    |   As set in the openid administration page
     |
     */
-    'client_secret' => env( 'AUTH0_CLIENT_SECRET' ),
+    'client_secret' => env( 'OPENID_CLIENT_SECRET' ),
 
     /*
      |--------------------------------------------------------------------------
@@ -37,7 +37,7 @@ return array(
      |   'Auth0\Login\Auth0Controller@callback'
      |
      */
-    'redirect_uri'  => env( 'APP_URL' ) . '/auth0/callback',
+    'redirect_uri'  => env( 'APP_URL' ) . '/openid/callback',
 
     /*
     |--------------------------------------------------------------------------
@@ -59,7 +59,7 @@ return array(
     |   This is used to verify the decoded tokens when using RS256
     |
     */
-    'authorized_issuers'  => [ env( 'AUTH0_DOMAIN' ) ],
+    'authorized_issuers'  => [ env( 'OPENID_DOMAIN' ) ],
 
     /*
     |--------------------------------------------------------------------------
