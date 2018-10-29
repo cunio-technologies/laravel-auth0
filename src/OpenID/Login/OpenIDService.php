@@ -4,7 +4,7 @@ namespace OpenID\Login;
 
 use Config;
 use Auth0\SDK\API\Authentication;
-use Auth0\SDK\OpenID;
+use Auth0\SDK\Auth0;
 use Auth0\SDK\JWTVerifier;
 use Illuminate\Contracts\Container\BindingResolutionException;
 
@@ -27,7 +27,7 @@ class OpenIDService
 
       $this->authApi = new Authentication($this->openIdConfig['domain'], $this->openIdConfig['client_id']);
 
-      $this->auth0 = new OpenID($this->openIdConfig);
+      $this->auth0 = new Auth0($this->openIdConfig);
     }
 
     /**
