@@ -1,6 +1,6 @@
 <?php
 
-namespace Auth0\Login;
+namespace OpenID\Login;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -21,7 +21,7 @@ class LoginServiceProvider extends ServiceProvider {
     public function boot()
     {
         \Auth::provider(self::PROVIDER_NAME, function ($app, array $config) {
-            return $app->make(Auth0UserProvider::class);
+            return $app->make(OpenIDUserProvider::class);
         });
 
         $this->publishes([
@@ -36,9 +36,9 @@ class LoginServiceProvider extends ServiceProvider {
      */
     public function register()
     {
-        // Bind the auth0 name to a singleton instance of the Auth0 Service
+        // Bind the auth0 name to a singleton instance of the OpenID Service
         $this->app->singleton(self::PROVIDER_NAME, function () {
-          return new Auth0Service();
+          return new OpenIDService();
         });
 
         // When Laravel logs out, logout the auth0 SDK trough the service

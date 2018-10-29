@@ -1,19 +1,19 @@
 <?php
 
-namespace Auth0\Login;
+namespace OpenID\Login;
 
 use Config;
 use Auth0\SDK\API\Authentication;
-use Auth0\SDK\Auth0;
+use Auth0\SDK\OpenID;
 use Auth0\SDK\JWTVerifier;
 use Illuminate\Contracts\Container\BindingResolutionException;
 
 /**
  * Service that provides access to the Auth0 SDK.
  */
-class Auth0Service
+class OpenIDService
 {
-    private $auth0Config;
+    private $openIdConfig;
     private $auth0;
     private $authApi;
     private $apiuser;
@@ -21,13 +21,13 @@ class Auth0Service
     private $rememberUser = false;
 
     public function __construct() {
-      $this->auth0Config = config('openid');
+      $this->openIdConfig = config('openid');
 
-      $this->auth0Config['store'] = new LaravelSessionStore();
+      $this->openIdConfig['store'] = new LaravelSessionStore();
 
-      $this->authApi = new Authentication($this->auth0Config['domain'], $this->auth0Config['client_id']);
+      $this->authApi = new Authentication($this->openIdConfig['domain'], $this->openIdConfig['client_id']);
 
-      $this->auth0 = new Auth0($this->auth0Config);
+      $this->auth0 = new OpenID($this->openIdConfig);
     }
 
     /**
@@ -54,7 +54,7 @@ class Auth0Service
     public function login($connection = null, $state = null, $additional_params = ['scope' => 'openid profile email'], $response_type = 'code')
     {
         $additional_params['response_type'] = $response_type;
-        $this->auth0->login($state, $connection, $additional_params);
+        $this->getSDK()->login($state, $connection, $additional_params);
     }
 
     /**
@@ -81,7 +81,7 @@ class Auth0Service
     /**
      * Sets a callback to be called when the user is logged in.
      *
-     * @param callback $cb A function that receives an auth0User and receives a Laravel user
+     * @param callback $cb A function that receives an OpenID User and receives a Laravel user
      */
     public function onLogin($cb)
     {

@@ -1,29 +1,29 @@
 <?php
 
-namespace Auth0\Login;
+namespace OpenID\Login;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\UserProvider;
-use Auth0\Login\Contract\Auth0UserRepository;
+use OpenID\Login\Contract\OpenIDUserRepository;
 use Auth0\SDK\Exception\CoreException;
 use Auth0\SDK\Exception\InvalidTokenException;
 
 /**
- * Service that provides an Auth0\LaravelAuth0\Auth0User stored in the session. This User provider
+ * Service that provides an OpenID\LaravelOpenID\OpenIDUser stored in the session. This User provider
  * should be used when you don't want to persist the entity.
  */
-class Auth0UserProvider implements UserProvider
+class OpenIDUserProvider implements UserProvider
 {
     protected $userRepository;
     protected $auth0;
 
     /**
-     * Auth0UserProvider constructor.
+     * OpenIDUserProvider constructor.
      *
-     * @param Auth0UserRepository       $userRepository
-     * @param \Auth0\Login\Auth0Service $auth0
+     * @param OpenIDUserRepository       $userRepository
+     * @param \OpenID\Login\OpenIDService $auth0
      */
-    public function __construct(Auth0UserRepository $userRepository, Auth0Service $auth0)
+    public function __construct(OpenIDUserRepository $userRepository, OpenIDService $auth0)
     {
         $this->userRepository = $userRepository;
         $this->auth0 = $auth0;

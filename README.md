@@ -1,6 +1,6 @@
-# Laravel Auth0 Plugin
+# Laravel OpenID Plugin
 
-This plugin helps you integrate your [Laravel](https://laravel.com/) WebApp with [Auth0](https://auth0.com/) to achieve Single Sign On with a few simple steps.
+This plugin helps you integrate your [Laravel](https://laravel.com/) WebApp with [OpenID](https://auth0.com/) to achieve Single Sign On with a few simple steps.
 
 ## Installation
 
@@ -36,11 +36,11 @@ In the `register` method of your `AppServiceProvider` add:
     }
 ```
 
-You can implement your own cache strategy by creating a new class that implements the `Auth0\SDK\Helpers\Cache\CacheHandler` contract, or just use the cache strategy you want by picking that store with `Cache::store('your_store_name')`;
+You can implement your own cache strategy by creating a new class that implements the `OpenID\SDK\Helpers\Cache\CacheHandler` contract, or just use the cache strategy you want by picking that store with `Cache::store('your_store_name')`;
 
 ### Storing users in your database
 
-You can customize the way you handle the users in your application by creating your own `UserRepository`. This class should implement the `Auth0\Login\Contract\Auth0UserRepository` contract. Please see the bottom of the [Laravel Quickstart](https://auth0.com/docs/quickstart/webapp/laravel) guide for the latest example. 
+You can customize the way you handle the users in your application by creating your own `UserRepository`. This class should implement the `OpenID\Login\Contract\OpenIDUserRepository` contract. Please see the bottom of the [Laravel Quickstart](https://auth0.com/docs/quickstart/webapp/laravel) guide for the latest example. 
 
 ### Laravel 5.2
 
@@ -50,7 +50,7 @@ Your routes need to be in the `web` routes group, otherwise it will not be able 
 ```php
 Route::group(['middleware' => ['web']], function () {
 
-  Route::get('/auth0/callback', '\Auth0\Login\Auth0Controller@callback');
+  Route::get('/auth0/callback', '\OpenID\Login\OpenIDController@callback');
 
   Route::get('/', function () {
 

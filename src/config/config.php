@@ -34,7 +34,7 @@ return array(
      |   The redirect URI
      |--------------------------------------------------------------------------
      |   Should be the same that the one configure in the route to handle the
-     |   'Auth0\Login\Auth0Controller@callback'
+     |   'OpenID\Login\OpenIDController@callback'
      |
      */
     'redirect_uri'  => env( 'APP_URL' ) . '/openid/callback',

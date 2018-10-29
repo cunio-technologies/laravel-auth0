@@ -1,37 +1,37 @@
 <?php
 
-namespace Auth0\Login\Repository;
+namespace OpenID\Login\Repository;
 
-use Auth0\Login\Auth0User;
-use Auth0\Login\Auth0JWTUser;
-use Auth0\Login\Contract\Auth0UserRepository as Auth0UserRepositoryContract;
+use OpenID\Login\OpenIDUser;
+use OpenID\Login\OpenIDJWTUser;
+use OpenID\Login\Contract\OpenIDUserRepository as OpenIDUserRepositoryContract;
 
-class Auth0UserRepository implements Auth0UserRepositoryContract
+class OpenIDUserRepository implements OpenIDUserRepositoryContract
 {
     /**
-     * @param \Auth0\Login\Contract\stdClass $jwt
+     * @param \OpenID\Login\Contract\stdClass $jwt
      *
-     * @return Auth0JWTUser
+     * @return OpenIDJWTUser
      */
     public function getUserByDecodedJWT($jwt)
     {
-        return new Auth0JWTUser($jwt);
+        return new OpenIDJWTUser($jwt);
     }
 
     /**
      * @param array $userInfo
      *
-     * @return Auth0User
+     * @return OpenIDUser
      */
     public function getUserByUserInfo($userInfo)
     {
-        return new Auth0User($userInfo['profile'], $userInfo['accessToken']);
+        return new OpenIDUser($userInfo['profile'], $userInfo['accessToken']);
     }
 
     /**
-     * @param \Auth0\Login\Contract\the $identifier
+     * @param \OpenID\Login\Contract\the $identifier
      *
-     * @return Auth0User|\Illuminate\Contracts\Auth\Authenticatable|null
+     * @return OpenIDUser|\Illuminate\Contracts\Auth\Authenticatable|null
      */
     public function getUserByIdentifier($identifier)
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Auth0\Login;
+namespace OpenID\Login;
 
 use Illuminate\Cache\Repository;
 use Auth0\SDK\Helpers\Cache\CacheHandler;

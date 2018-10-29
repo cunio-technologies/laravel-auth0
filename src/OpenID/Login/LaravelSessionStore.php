@@ -1,6 +1,6 @@
 <?php
 
-namespace Auth0\Login;
+namespace OpenID\Login;
 
 use Session;
 use Auth0\SDK\Store\StoreInterface;
@@ -12,7 +12,7 @@ class LaravelSessionStore implements StoreInterface
     /**
      * Persists $value on $_SESSION, identified by $key.
      *
-     * @see Auth0SDK\BaseAuth0
+     * @see Auth0SDK\BaseOpenID
      *
      * @param string $key
      * @param mixed  $value
@@ -39,7 +39,7 @@ class LaravelSessionStore implements StoreInterface
     /**
      * Removes a persisted value identified by $key.
      *
-     * @see Auth0SDK\BaseAuth0
+     * @see Auth0SDK\BaseOpenID
      *
      * @param string $key
      */

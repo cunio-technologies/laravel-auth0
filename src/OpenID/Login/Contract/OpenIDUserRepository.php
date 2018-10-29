@@ -1,8 +1,8 @@
 <?php
 
-namespace Auth0\Login\Contract;
+namespace OpenID\Login\Contract;
 
-interface Auth0UserRepository
+interface OpenIDUserRepository
 {
     /**
      * @param stdClass $jwt with the data provided in the JWT
