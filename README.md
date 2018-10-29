@@ -1,6 +1,6 @@
 # Laravel OpenID Plugin
 
-This plugin helps you integrate your [Laravel](https://laravel.com/) WebApp with [OpenID](https://auth0.com/) to achieve Single Sign On with a few simple steps.
+This plugin helps you integrate your [Laravel](https://laravel.com/) WebApp with [OpenID](https://openid.net) to achieve Single Sign On with a few simple steps.
 
 ## Installation
 
