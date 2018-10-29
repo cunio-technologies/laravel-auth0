@@ -1,6 +1,6 @@
 {
     "name": "auth0/login",
-    "description": "Laravel plugin that helps authenticate with the auth0 service",
+    "description": "Laravel plugin that helps authenticate with an OpenID service using Auth0 package",
     "license": "MIT",
     "require": {
         "php": ">=5.3.0",
@@ -14,16 +14,16 @@
             "src/facade"
         ],
         "psr-0": {
-            "Auth0\\Login\\": "src/"
+            "OpenID\\Login\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Auth0\\Login\\LoginServiceProvider"
+                "OpenID\\Login\\LoginServiceProvider"
             ],
             "aliases": {
-                "Auth0": "Auth0\\Login\\Facade\\Auth0"
+                "OpenID": "OpenID\\Login\\Facade\\OpenID"
             }
         }
     },

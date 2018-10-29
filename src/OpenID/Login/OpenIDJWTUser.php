@@ -1,26 +1,33 @@
 <?php
 
-namespace Auth0\Login;
+namespace OpenID\Login;
 
 /**
  * This class represents a generic user initialized with the user information
- * given by Auth0 and provides a way to access to the user profile.
+ * given by OpenID and provides a way to access to the decoded JWT data.
  */
-class Auth0User implements \Illuminate\Contracts\Auth\Authenticatable
+class OpenIDJWTUser implements \Illuminate\Contracts\Auth\Authenticatable
 {
     private $userInfo;
-    private $accessToken;
 
     /**
-     * Auth0User constructor.
+     * OpenIDJWTUser constructor.
      *
      * @param $userInfo
-     * @param $accessToken
      */
-    public function __construct($userInfo, $accessToken)
+    public function __construct($userInfo)
     {
-        $this->userInfo = $userInfo;
-        $this->accessToken = $accessToken;
+        $this->userInfo = get_object_vars($userInfo);
+    }
+
+    /**
+     * Get the unique identifier for the user.
+     *
+     * @return mixed
+     */
+    public function getAuthIdentifierName()
+    {
+        return $this->userInfo['sub'];
     }
 
     /**
@@ -30,20 +37,7 @@ class Auth0User implements \Illuminate\Contracts\Auth\Authenticatable
      */
     public function getAuthIdentifier()
     {
-      if (isset($this->userInfo['sub'])) {
         return $this->userInfo['sub'];
-      }
-      return $this->userInfo['user_id'];
-    }
-
-    /**
-     * Get id field name.
-     *
-     * @return string
-     */
-    public function getAuthIdentifierName()
-    {
-        return 'id';
     }
 
     /**
@@ -53,7 +47,7 @@ class Auth0User implements \Illuminate\Contracts\Auth\Authenticatable
      */
     public function getAuthPassword()
     {
-        return $this->accessToken;
+        return;
     }
 
     /**
@@ -92,7 +86,7 @@ class Auth0User implements \Illuminate\Contracts\Auth\Authenticatable
     }
 
     /**
-     * @return mixed
+     * @return array
      */
     public function getUserInfo()
     {

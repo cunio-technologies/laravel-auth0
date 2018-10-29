@@ -1,23 +1,23 @@
 <?php
 
-namespace Auth0\Login;
+namespace OpenID\Login;
 
-use Auth0\Login\Contract\Auth0UserRepository;
+use OpenID\Login\Contract\OpenIDUserRepository;
 use Illuminate\Routing\Controller;
 
-class Auth0Controller extends Controller
+class OpenIDController extends Controller
 {
     /**
-     * @var Auth0UserRepository
+     * @var OpenIDUserRepository
      */
     protected $userRepository;
 
     /**
-     * Auth0Controller constructor.
+     * OpenIDController constructor.
      *
-     * @param Auth0UserRepository $userRepository
+     * @param OpenIDUserRepository $userRepository
      */
-    public function __construct(Auth0UserRepository $userRepository)
+    public function __construct(OpenIDUserRepository $userRepository)
     {
         $this->userRepository = $userRepository;
     }
@@ -27,8 +27,8 @@ class Auth0Controller extends Controller
      */
     public function callback()
     {
-        // Get a handle of the Auth0 service (we don't know if it has an alias)
-        $service = \App::make('auth0');
+        // Get a handle of the OpenID service (we don't know if it has an alias)
+        $service = \App::make('openid');
 
         // Try to get the user information
         $profile = $service->getUser();
